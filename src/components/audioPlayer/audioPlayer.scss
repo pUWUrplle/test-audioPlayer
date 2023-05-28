@@ -1,0 +1,195 @@
+.audioControls {
+  max-width: 580px;
+  width:100%;//580px;
+  height: 198px;
+  border-radius: 0px;
+  background: #cfd3d6;
+  padding:20px;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+    .playButton{
+      align-self: flex-start;
+      cursor:pointer;
+    }
+    .timerVolumeRow{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .progressBar{
+      position: relative;
+      cursor:pointer;
+      .progressTrack{
+        height:2px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      /*  width:100%;
+        height:2px;
+        margin-top:5px;
+        margin-bottom:5px;
+        object-fit:none;*/
+      }
+      .progressTrackComplete{
+        position: absolute;
+        height:2px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        //object-fit: none;
+        /*height:2px;
+        //margin-top:-2px;
+        margin-bottom:5px;
+        width:50%;
+        margin-left:-50%;
+        position: relative;
+        left: -50%;
+        object-fit:none;*/
+      }
+      .progressThumb{
+        width:16px;
+        height:12px;
+        //margin-left:-16px;
+        //margin-top: -12px;
+        position:absolute;
+        //top:-4px;
+        //top: -18px;
+      }
+    }
+    .volumeSlider{
+      max-width: 252px;
+      width:100%;
+      position: relative;
+      margin-right:5px;
+      cursor:pointer;
+      .progressTrack{
+        height:2px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+      .progressTrackComplete{
+        position: absolute;
+        height:2px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .progressThumb{
+        width:16px;
+        height:12px;
+        left:-8px;
+        //margin-left:-16px;
+        //margin-top: -12px;
+        position:absolute;
+        //top:-4px;
+        //top: -18px;
+      }
+    }
+  }
+
+  .linkInputRow{
+    display:flex;
+    flex-wrap:nowrap;
+    position:relative;
+  }
+  .linkInputText{
+    background:white;
+    Width: 492px;
+    border:none;
+    Font-family: Space Grotesk;
+    Font-style: Light;
+    Font-size: 24px;
+    Line-height: 32px;
+    text-Align: Left;
+    vertical-align: Center;
+    Letter-spacing: -0.4px;
+    Fill: Solid;
+    color: #A4A3A4;
+    outline: none;
+    padding:32px 16px 32px 16px;
+  }
+.backButton{
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.4px;
+  color: #1B191C;
+  border-radius: 2px;
+  order: 0;
+  flex-grow: 0;
+  cursor:pointer;
+  text-align: left;
+  margin-bottom:20px;
+}
+.insetText{
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.4px;
+  color: #1B191C;
+  border-radius: 2px;
+  order: 0;
+  flex-grow: 0;
+  text-align: left;
+  margin-bottom:20px;
+}
+.linkSubmitButton{
+  cursor:pointer;  
+}
+//was trying to style the actual player... unsuccessfully
+/*#player {
+  width: 620px;
+  height: 198px;
+  border-radius: 0px;
+  background: #cfd3d6;
+  /*&::-webkit-media-controls{
+    /*border-radius: 0px;
+    margin:none;
+    padding:none;
+    background: #cfd3d6;
+    width: 100%;
+    height:100%;  
+    justify-content: flex-start;
+  /*}
+  &::-webkit-media-controls-panel {
+    border-radius: 0px;
+    margin:none;
+    padding:none;
+    background: #cfd3d6;
+    width: 100%;
+    height:100%;
+    justify-content: flex-start;
+    align-content: space-around;
+  }
+  &::-webkit-media-controls-enclosure{
+  height:100%;
+  }
+  &::-webkit-media-controls-play-button{
+    //position:relative;
+    width:40px;
+    height:40px;
+    color:#FFFFFF;
+  }
+  &::-webkit-media-controls-enclosure {
+    background-color: pink;
+    color:red
+  }
+}*/

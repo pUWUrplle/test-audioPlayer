@@ -1,0 +1,14 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  width: 100%;
+  min-width: 580px;
+}
+@media (min-width: 768px) {
+  .App {
+  }
+}
+body {
+  border: 0;
+  margin: 0;
+}

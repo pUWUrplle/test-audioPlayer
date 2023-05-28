@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <title>React App</title>
+  	<script src="https://floriankarsten.github.io/space-grotesk/" id="external-js"></script>
+</head>
+
+  <body>
+    <div class="mainPage">
+      <div class="audioGroup">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 350px;
+          "
+        >
+          <div class="titleText">
+            Play any audio sources directly in the browser!
+          </div>
+          <div class="contentText">
+            Without any restrictions for free
+          </div>
+          <div class="termsOfServiceRow">
+            <div class="subtext" style="white-space: nowrap;">
+              By uploading the audio file, you agree to our
+            </div>
+            <div class="subtext" style="width: 400px;">Terms of Service.</div>
+          </div>
+        </div>
+        <div class="audioApp">
+          <div id="root"></div>
+        </div>
+      </div>
+      <div class="aboutSection">
+        <div class="aboutSectionText">
+          <div class="titleText" style="color: #f5f6f7;">How It Works</div>
+          <div class="contentText" style="color: #eeeeee;">
+            Lorem Ipsum is a "fish" text often used in print and web design.
+            Lorem Ipsum has been the standard "fish" for Latin texts since the
+            early 16th century. At that time, an unnamed printer created a large
+            collection of font sizes and shapes, using Lorem Ipsum for print
+            samples.
+          </div>
+        </div>
+        <img src="../png/cloud.png" alt="cloud" />
+      </div>
+      <div class="technicalReq">
+        Technical requirements
+        <div class="cloudSelectorRow">
+          <div id="reqs1" class="cloudSelector" onclick="reqsTabChange(document.getElementById('reqs1'),document.getElementById('reqs2'),document.getElementById('cloudDescription1'),document.getElementById('cloudDescription2'))">
+            Own service
+          </div>
+          <div id="reqs2" class="cloudSelector cloudSelectorOff"
+          onclick="reqsTabChange(document.getElementById('reqs2'),document.getElementById('reqs1'),document.getElementById('cloudDescription2'),document.getElementById('cloudDescription1'))"> Amazon
+          instance
+        </div>
+      </div>
+      <div id="cloudDescription1" class="cloudDescription">
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">OS + apps</div>
+          <div class="cloudDescriptionItem">
+            Unix/OSX + docker + nvidia-docker
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">CPU</div>
+          <div class="cloudDescriptionItem">
+            4 cores or more (e.g. intel core i5)
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">Memory</div>
+          <div class="cloudDescriptionItem">
+            16 GB RAM
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">Free space</div>
+          <div class="cloudDescriptionItem">
+            100 GB of free space
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">Graphics hardware</div>
+          <div class="cloudDescriptionItem">
+            GPU: NVidia only 2Gb+
+          </div>
+        </div>
+      </div>
+      <div id="cloudDescription2" class="cloudDescription cloudDescriptionOff">
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">Instance</div>
+          <div class="cloudDescriptionItem">
+            g4dn.xlarge
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">GPU</div>
+          <div class="cloudDescriptionItem">
+            1
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">vCPUs</div>
+          <div class="cloudDescriptionItem">
+            4
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">Memory</div>
+          <div class="cloudDescriptionItem">
+            16 GB RAM
+          </div>
+        </div>
+        <div class="cloudDescripitionContainer">
+          <div class="cloudDescriptionItem">Storage</div>
+          <div class="cloudDescriptionItem">
+            125 GB
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style lang="scss">
+  .mainPage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+
+    background: #1b191c;
+  }
+  .audioGroup {
+    height: 490px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    padding: 40px;
+    background: #eeeeee;
+  }
+  .titleText {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -1px;
+  }
+  .contentText {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+  }
+  .audioApp {
+    align-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .termsOfServiceRow {
+    padding-top: 250px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .subtext {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+
+    color: #1b191c;
+  }
+  .aboutSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 36px;
+    margin-top: 120px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  .aboutSectionText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 40px;
+  }
+  .technicalReq {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+    padding: 40px;
+
+    color: #f5f6f7;
+  }
+  .cloudSelectorRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    margin-top: 40px;
+    margin-bottom: 35px;
+  }
+  .cloudSelector {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+
+    color: #f5f6f7;
+    border-bottom: 1px solid #eeeeee;
+
+    cursor:pointer;
+  }
+  .cloudSelectorOff {
+    color: #CFD3D6;
+;
+    border-bottom: none;
+  }
+  .cloudDescription {
+    display: flex;
+    flex-flow: column wrap;
+    height: 190px;
+    gap: 0px 56px;
+  }
+  .cloudDescripitionContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    gap: 137px;
+    justify-content: space-between;
+    border-bottom: 1px solid #cfd3d61a;
+    max-width: 644px;
+  }
+  .clouddescriptionitem {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+  }
+  .cloudDescriptionOff {
+    display: none;
+  }
+  @media (max-width: 1300px) {
+    .mainPage {
+    }
+  }
+</style>
+<script>
+  function reqsTabChange(titleButton, otherTitleButton , tabContent, otherTabContent) {
+    // I would use nested styles but avoided it due to no js requirenment
+    titleButton.classList.remove("cloudSelectorOff");
+    otherTitleButton.classList.add("cloudSelectorOff");
+    tabContent.classList.remove("cloudDescriptionOff");
+    otherTabContent.classList.add("cloudDescriptionOff");
+  }
+</script>
