@@ -22,21 +22,12 @@ const AudioPlayer = () => {
   const [playerProgress, setPlayerProgress] = useState(0); //0->1;
   const [playerVolume, setPlayerVolume] = useState(1); // 0->1;
   const [uiState, setUiState] = useState("input"); //input, loading, player
-  /*const audioRef = useRef();
-  useEffect(() => {
-    const audio = audioRef.current.focus();
-    // console.log(audio);
-    //const element = document.getElementById("player");
-  }, []);
-  */
+  const audioRef = useRef();
   const changeLink = () => {
     if (validateLink(newLink)) {
       setLink(newLink);
-      var playerElement = document.getElementById("player");
-      //this should be done with refs, but i ran out of time to fix it
-      playerElement.load();
-      playerElement.play();
-      //console.log(newLink);
+      audioRef.current.load();
+      audioRef.current.play();
       setPlayerState(true);
       updateTime();
       setUiState("player");
@@ -53,48 +44,42 @@ const AudioPlayer = () => {
       .catch((err) => console.log(err.message));
   };
   const playTrack = () => {
-    var playerElement = document.getElementById("player");
     if (playerState) {
-      playerElement.pause();
+      audioRef.current.pause();
       setPlayerState(false);
     } else {
-      playerElement.play();
+      audioRef.current.play();
       setPlayerState(true);
     }
   };
   const updateTime = () => {
-    //this isn't called correctly from player. i have no idea why.
-    var playerElement = document.getElementById("player");
-    var sec = Math.floor(playerElement.currentTime % 60);
+    var sec = Math.floor(audioRef.current.currentTime % 60);
     if (sec < 10) sec = "0" + sec;
     setPlayerSeconds(sec);
-    var min = Math.floor(playerElement.currentTime / 60);
+    var min = Math.floor(audioRef.current.currentTime / 60);
     if (min < 10) min = "0" + min;
     setPlayerMinutes(min);
-    setPlayerProgress(playerElement.currentTime / playerElement.duration);
+    setPlayerProgress(audioRef.current.currentTime / audioRef.current.duration);
   };
   const setTime = (newTime) => {
     if (typeof newTime === "number" && newTime !== Infinity) {
-      var playerElement = document.getElementById("player");
-      var sec = Math.floor(playerElement.currentTime % 60);
+      var sec = Math.floor(audioRef.current.currentTime % 60);
       if (sec < 10) sec = "0" + sec;
       setPlayerSeconds(sec);
-      var min = Math.floor(playerElement.currentTime / 60);
+      var min = Math.floor(audioRef.current.currentTime / 60);
       if (min < 10) min = "0" + min;
       setPlayerMinutes(min);
-      setPlayerProgress(newTime / playerElement.duration);
-      playerElement.currentTime = newTime;
+      setPlayerProgress(newTime / audioRef.current.duration);
+      audioRef.current.currentTime = newTime;
     }
   };
   const updateVolume = () => {
-    var playerElement = document.getElementById("player");
-    setPlayerVolume(playerElement.volume);
+    setPlayerVolume(audioRef.current.volume);
   };
   const setVolume = (newVolume) => {
-    var playerElement = document.getElementById("player");
     if (newVolume >= 0 && newVolume <= 1) {
       setPlayerVolume(newVolume);
-      playerElement.volume = newVolume;
+      audioRef.current.volume = newVolume;
     }
   };
   const volumeBarClick = () => {
@@ -103,7 +88,6 @@ const AudioPlayer = () => {
       .getBoundingClientRect();
     var newPercent =
       (mousePos.x - volumeSliderData.left) / volumeSliderData.width;
-    //var playerElement = document.getElementById("player");
     setVolume(newPercent);
   };
   const progressBarClick = () => {
@@ -112,8 +96,7 @@ const AudioPlayer = () => {
       .getBoundingClientRect();
     var newPercent =
       (mousePos.x - progressBarData.left) / progressBarData.width;
-    var playerElement = document.getElementById("player");
-    setTime(newPercent * playerElement.duration);
+    setTime(newPercent * audioRef.current.duration);
   };
   const handleInputChange = (e) => setNewLink(e.target.value);
   const handleInputEnter = (e) => {
@@ -163,6 +146,7 @@ const AudioPlayer = () => {
           id="player"
           onTimeUpdate={updateTime}
           onVolumeChange={updateVolume}
+          ref={audioRef}
         >
           <source src={link} type="audio/ogg" />
           audio tag is not supported by browser
